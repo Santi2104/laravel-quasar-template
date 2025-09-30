@@ -27,11 +27,14 @@ const routes: RouteRecordRaw[] = [
     // Rutas para usuarios autenticados (sin layout por ahora)
     {
         path: "/dashboard",
-        name: "dashboard",
-        component: () => import("../pages/WelcomePage.vue"), // Temporal
-        meta: {
-            requiresAuth: true,
-        },
+        component: () => import("../layout/AuthLayout.vue"), // Temporal
+        children: [
+            {
+                path: "",
+                name: "dashboard",
+                component: () => import("../modules/DashboardPage.vue"),
+            },
+        ],
     },
 ];
 
